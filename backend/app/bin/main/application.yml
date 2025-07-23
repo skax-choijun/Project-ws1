@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: academic-admin-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/academicdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.skax.academicadmin.domain
+jwt:
+  secret: secret-key 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skax.academicadmin.repository.ApplicantMapper">
+    <select id="findAll" resultType="com.skax.academicadmin.domain.Applicant">
+        SELECT id, name, birth_date as birthDate, email, phone FROM applicants
+    </select>
+    <select id="findById" parameterType="long" resultType="com.skax.academicadmin.domain.Applicant">
+        SELECT id, name, birth_date as birthDate, email, phone FROM applicants WHERE id = #{id}
+    </select>
+    <insert id="insert" parameterType="com.skax.academicadmin.domain.Applicant">
+        INSERT INTO applicants(name, birth_date, email, phone)
+        VALUES(#{name}, #{birthDate}, #{email}, #{phone})
+    </insert>
+    <update id="update" parameterType="com.skax.academicadmin.domain.Applicant">
+        UPDATE applicants SET name=#{name}, birth_date=#{birthDate}, email=#{email}, phone=#{phone} WHERE id=#{id}
+    </update>
+    <delete id="delete" parameterType="long">
+        DELETE FROM applicants WHERE id=#{id}
+    </delete>
+</mapper> 

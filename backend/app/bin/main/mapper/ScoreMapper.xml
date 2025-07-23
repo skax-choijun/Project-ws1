@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skax.academicadmin.repository.ScoreMapper">
+    <select id="findAll" resultType="com.skax.academicadmin.domain.Score">
+        SELECT id, applicant_id as applicantId, subject, score_type as scoreType, value, remarks FROM scores
+    </select>
+    <select id="findById" parameterType="long" resultType="com.skax.academicadmin.domain.Score">
+        SELECT id, applicant_id as applicantId, subject, score_type as scoreType, value, remarks FROM scores WHERE id = #{id}
+    </select>
+    <insert id="insert" parameterType="com.skax.academicadmin.domain.Score">
+        INSERT INTO scores(applicant_id, subject, score_type, value, remarks)
+        VALUES(#{applicantId}, #{subject}, #{scoreType}, #{value}, #{remarks})
+    </insert>
+    <update id="update" parameterType="com.skax.academicadmin.domain.Score">
+        UPDATE scores SET applicant_id=#{applicantId}, subject=#{subject}, score_type=#{scoreType}, value=#{value}, remarks=#{remarks} WHERE id=#{id}
+    </update>
+    <delete id="delete" parameterType="long">
+        DELETE FROM scores WHERE id=#{id}
+    </delete>
+</mapper> 

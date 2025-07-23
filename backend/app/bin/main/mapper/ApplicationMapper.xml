@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skax.academicadmin.repository.ApplicationMapper">
+    <select id="findAll" resultType="com.skax.academicadmin.domain.Application">
+        SELECT id, applicant_id as applicantId, submitted_at as submittedAt, status, remarks FROM applications
+    </select>
+    <select id="findById" parameterType="long" resultType="com.skax.academicadmin.domain.Application">
+        SELECT id, applicant_id as applicantId, submitted_at as submittedAt, status, remarks FROM applications WHERE id = #{id}
+    </select>
+    <insert id="insert" parameterType="com.skax.academicadmin.domain.Application">
+        INSERT INTO applications(applicant_id, submitted_at, status, remarks)
+        VALUES(#{applicantId}, #{submittedAt}, #{status}, #{remarks})
+    </insert>
+    <update id="update" parameterType="com.skax.academicadmin.domain.Application">
+        UPDATE applications SET applicant_id=#{applicantId}, submitted_at=#{submittedAt}, status=#{status}, remarks=#{remarks} WHERE id=#{id}
+    </update>
+    <delete id="delete" parameterType="long">
+        DELETE FROM applications WHERE id=#{id}
+    </delete>
+</mapper> 
